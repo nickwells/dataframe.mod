@@ -253,7 +253,7 @@ f 2 3 4
 		content: `1 2 3 4
 1 2 3 4`,
 		readErr: testhelper.MkExpErr(
-			`dataframe error: bad column type: column: 0 type: "ColTypeMaxVal"`,
+			`dataframe error: bad column type: column: 0 type: "MaxVal"`,
 		),
 		optArgs: []dataframe.DFReaderOpt{
 			dataframe.DFRColTypes(dataframe.ColTypeMaxVal),
