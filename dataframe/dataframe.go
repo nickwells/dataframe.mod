@@ -422,7 +422,7 @@ func (df *DF) SetColNames(names ...string) error {
 // setIdx will set the index of the column to the next free column
 // of the appropriate type
 func (df *DF) setIdx(i int) {
-	var idx int = -1
+	idx := -1
 	switch df.mci.info[i].colType {
 	case ColTypeUnknown:
 	case ColTypeBool:

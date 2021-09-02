@@ -15,7 +15,7 @@ const (
 )
 
 func TestReadTable(t *testing.T) {
-	var readTableTests = []struct {
+	readTableTests := []struct {
 		testhelper.ID
 		testhelper.ExpErr
 		fileName      string

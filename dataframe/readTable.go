@@ -587,7 +587,6 @@ Loop:
 
 		for _, op := range operations {
 			skip, err := op(dfr, state, df)
-
 			if err != nil {
 				return nil, err
 			}
