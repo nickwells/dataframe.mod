@@ -33,6 +33,11 @@ type ColInfo struct {
 	colType ColType // data type
 }
 
+// String returns a formatted string describing the ColInfo value
+func (ci ColInfo) String() string {
+	return ci.name + "(" + ci.colType.String() + ")"
+}
+
 // Check returns an error if the colType is unknown or invalid or if the name
 // is blank. It returns nil otherwise
 func (ci ColInfo) Check() error {
