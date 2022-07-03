@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/nickwells/dataframe.mod/dataframe"
-	"github.com/nickwells/testhelper.mod/testhelper"
+	"github.com/nickwells/testhelper.mod/v2/testhelper"
 )
 
 // makeTestRow creates and returns a standard Row for the tests to use
@@ -41,7 +41,7 @@ func TestRowValByIdx(t *testing.T) {
 		testhelper.ExpErr
 		idx        int
 		expColType dataframe.ColType
-		expVal     interface{}
+		expVal     any
 	}{
 		{
 			ID:         testhelper.MkID("good - bool column"),
@@ -112,7 +112,7 @@ func TestRowValByName(t *testing.T) {
 		testhelper.ExpErr
 		name       string
 		expColType dataframe.ColType
-		expVal     interface{}
+		expVal     any
 	}{
 		{
 			ID:         testhelper.MkID("good - bool column"),
@@ -173,7 +173,7 @@ func TestRowValByName(t *testing.T) {
 // compareBoolVals converts the expected and actual values into bool values,
 // reporting any conversion failure and then checks that they are the same
 // reporting any differeinces
-func compareBoolVals(t *testing.T, id string, expected, actual interface{}) {
+func compareBoolVals(t *testing.T, id string, expected, actual any) {
 	t.Helper()
 
 	expVal, ok := expected.(dataframe.BoolVal)
@@ -203,7 +203,7 @@ func compareBoolVals(t *testing.T, id string, expected, actual interface{}) {
 // compareIntVals converts the expected and actual values into int values,
 // reporting any conversion failure and then checks that they are the same
 // reporting any differeinces
-func compareIntVals(t *testing.T, id string, expected, actual interface{}) {
+func compareIntVals(t *testing.T, id string, expected, actual any) {
 	t.Helper()
 
 	expVal, ok := expected.(dataframe.IntVal)
@@ -233,7 +233,7 @@ func compareIntVals(t *testing.T, id string, expected, actual interface{}) {
 // compareFloatVals converts the expected and actual values into float values,
 // reporting any conversion failure and then checks that they are the same
 // reporting any differeinces
-func compareFloatVals(t *testing.T, id string, expected, actual interface{}) {
+func compareFloatVals(t *testing.T, id string, expected, actual any) {
 	t.Helper()
 
 	expVal, ok := expected.(dataframe.FloatVal)
@@ -263,7 +263,7 @@ func compareFloatVals(t *testing.T, id string, expected, actual interface{}) {
 // compareStringVals converts the expected and actual values into string values,
 // reporting any conversion failure and then checks that they are the same
 // reporting any differeinces
-func compareStringVals(t *testing.T, id string, expected, actual interface{}) {
+func compareStringVals(t *testing.T, id string, expected, actual any) {
 	t.Helper()
 
 	expVal, ok := expected.(dataframe.StringVal)
@@ -293,7 +293,7 @@ func compareStringVals(t *testing.T, id string, expected, actual interface{}) {
 type colTest struct {
 	name    string
 	expType dataframe.ColType
-	expVal  interface{}
+	expVal  any
 }
 
 func cmpCol(t *testing.T, id string, i int, c dataframe.Column, cTest colTest) {

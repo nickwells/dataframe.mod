@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/nickwells/dataframe.mod/dataframe"
-	"github.com/nickwells/testhelper.mod/testhelper"
+	"github.com/nickwells/testhelper.mod/v2/testhelper"
 )
 
 const (

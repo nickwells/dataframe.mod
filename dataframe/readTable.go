@@ -8,6 +8,7 @@ import (
 	"regexp"
 	"strconv"
 
+	"github.com/nickwells/check.mod/v2/check"
 	"github.com/nickwells/location.mod/location"
 )
 
@@ -121,21 +122,25 @@ func AllowErrors(dfr *DFReader) error {
 // source data to be skipped. Note that columns are numbered from zero not
 // one.
 func DFRSkipCols(skips ...int) DFReaderOpt {
-	return func(dfr *DFReader) error {
-		if len(skips) == 0 {
-			return ErrNoSkipColsGiven
-		}
+	if len(skips) == 0 {
+		panic(ErrNoSkipColsGiven)
+	}
 
+	if err := check.SliceAll[[]int](check.ValGE(int(0)))(skips); err != nil {
+		panic(dfErrorf("a negative skip index has been given: %s", err))
+	}
+
+	if err := check.SliceHasNoDups(skips); err != nil {
+		panic(dfErrorf("a duplicate skip index has been given: %s", err))
+	}
+
+	return func(dfr *DFReader) error {
 		if len(dfr.skipCols) != 0 {
 			return ErrSkipIndexesAlreadySet
 		}
 
 		for i, si := range skips {
-			if si < 0 {
-				return dfErrorf(
-					"a negative skip index has been given: skips[%d] == %d",
-					i, si)
-			}
+			// we must repeat the duplicate test in case this is called twice
 			if _, ok := dfr.skipCols[si]; ok {
 				return dfErrorf(
 					"a duplicate skip index has been given: skips[%d] == %d",
@@ -201,13 +206,14 @@ func DFRColTypes(types ...ColType) DFReaderOpt {
 }
 
 // SkipLines returns a function which will specify the number of lines for
-// the DFReader to skip at the start of the input. The default
-// is zero
+// the DFReader to skip at the start of the input. The default is zero. It
+// will panic if the number of lines passed is less than 0.
 func SkipLines(n int64) DFReaderOpt {
+	if n < 0 {
+		panic(dfErrorf("the number of lines to skip (%d) must be >= 0", n))
+	}
+
 	return func(dfr *DFReader) error {
-		if n < 0 {
-			return dfErrorf("the number of lines to skip (%d) must be >= 0", n)
-		}
 		dfr.skipLines = n
 		return nil
 	}

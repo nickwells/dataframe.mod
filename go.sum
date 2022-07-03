@@ -1,4 +1,10 @@
+github.com/nickwells/check.mod/v2 v2.0.2 h1:b7r5X21U7hUDeF4AldGBVX/U9vyYAfVu3+/eZW6fcmo=
+github.com/nickwells/check.mod/v2 v2.0.2/go.mod h1:7g9v5zh28BWeSQ/ZFJ4SEgAFwwJv3WY8K85VWaWs63k=
 github.com/nickwells/location.mod v1.2.16 h1:Nq8Irg0sr8gNDLJv0QOjGV/qtOpDw5f5IlU49fRVuOQ=
 github.com/nickwells/location.mod v1.2.16/go.mod h1:uSywXjaNmvOaMju043ohtVQAQ7vPAH4qVYsKGPGknPw=
 github.com/nickwells/testhelper.mod v1.14.0 h1:1aCkxJ7xAOUX8iiPIc+7pC/uDeAsW+/nkokg73G3obo=
 github.com/nickwells/testhelper.mod v1.14.0/go.mod h1:Ct/U2PjL0n9hGc+US6uR/s4NxSRI33NM+0ZkrDkG0XI=
+github.com/nickwells/testhelper.mod/v2 v2.0.0 h1:g4QqEDymswzvLa7oGlzbTFX3/17lNNjW09lcl6jso1c=
+github.com/nickwells/testhelper.mod/v2 v2.0.0/go.mod h1:pdhf+XHRINEUH6a0OcwC98ETD3ZluAXKA5xOhC2I2Qk=
+golang.org/x/exp v0.0.0-20220325121720-054d8573a5d8 h1:Xt4/LzbTwfocTk9ZLEu4onjeFucl88iW+v4j4PWbQuE=
+golang.org/x/exp v0.0.0-20220325121720-054d8573a5d8/go.mod h1:lgLbSvA5ygNOMpwM/9anMpWVlVJ7Z+cHWq/eFuinpGE=
