@@ -97,7 +97,7 @@ func (r *Row) AddString(name string, v StringVal) error {
 // ValByIdx returns a value and its associated type from the Row
 // corresponding to the supplied column index. If the column index is not
 // recognised then an error is returned.
-func (r *Row) ValByIdx(idx int) (interface{}, ColType, error) {
+func (r *Row) ValByIdx(idx int) (any, ColType, error) {
 	if idx < 0 || idx >= len(r.mci.info) {
 		return nil,
 			ColTypeUnknown,
@@ -122,7 +122,7 @@ func (r *Row) ValByIdx(idx int) (interface{}, ColType, error) {
 // ValByName returns a value and its associated type from the Row
 // corresponding to the supplied column name. If the column name is not
 // recognised then an error is returned.
-func (r *Row) ValByName(name string) (interface{}, ColType, error) {
+func (r *Row) ValByName(name string) (any, ColType, error) {
 	ci, ok := r.mci.nameToCol[name]
 	if !ok {
 		return nil, ColTypeUnknown, dfErrorf("Unknown column name: %q", name)

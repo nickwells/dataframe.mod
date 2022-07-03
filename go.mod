@@ -1,6 +1,6 @@
 module github.com/nickwells/dataframe.mod
 
-go 1.13
+go 1.18
 
 require (
 	github.com/nickwells/location.mod v1.2.16

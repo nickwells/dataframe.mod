@@ -95,7 +95,7 @@ func (c Column) checkRowIdx(i int) error {
 
 // GetVal returns the ith row of the column. It will return an error if i is
 // not in the range of rows
-func (c Column) GetVal(i int) (interface{}, error) {
+func (c Column) GetVal(i int) (any, error) {
 	if err := c.checkRowIdx(i); err != nil {
 		return nil, err
 	}

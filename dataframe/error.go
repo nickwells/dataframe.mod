@@ -36,6 +36,6 @@ var (
 )
 
 // dfErrorf formats the arguments into a dfError
-func dfErrorf(format string, args ...interface{}) dfError {
+func dfErrorf(format string, args ...any) dfError {
 	return dfError(fmt.Sprintf(format, args...))
 }
